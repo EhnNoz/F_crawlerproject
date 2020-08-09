@@ -8,7 +8,12 @@ class PlatformAdmin(admin.ModelAdmin):
     class Meta:
         model = Platform
 
-
+@admin.register(Duration)
+class DurationAdmin(admin.ModelAdmin):
+    class Meta:
+        model = Duration
+        
+        
 @admin.register(Resource)
 class ResourceAdmin(admin.ModelAdmin):
     class Meta:

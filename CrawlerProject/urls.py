@@ -25,6 +25,7 @@ router.register(r'manifest', views.ManifestViewSet)
 router.register(r'config', views.ConfigViewSet)
 #router.register(r'manifestsp', views.Manifest_SPViewSet)
 router.register(r'news',views.NewsViewSet)
+router.register(r'duration',views.DurationViewSet)
 
 
 urlpatterns = [

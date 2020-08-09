@@ -7,6 +7,12 @@ class PlatformSerializer(serializers.ModelSerializer):
         model = Platform
         fields = ['id', 'name', 'active']
 
+class DurationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Duration
+        fields = ['id', 'duration', 'active']
+        
+        
 
 class ResourceSerializer(serializers.ModelSerializer):
     platform = PlatformSerializer()
@@ -22,7 +28,7 @@ class ConfigSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Config
-        fields = ['plan', 'platforms', 'reousrces']
+        fields = ['plan','duration' ,'platforms', 'reousrces']
 
 
 

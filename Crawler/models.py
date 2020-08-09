@@ -17,15 +17,31 @@ class Platform(models.Model):
     def __unicode__(self):
         return self.name
 
+class Duration(models.Model):
+    duration = models.CharField(verbose_name=_('Duration'), max_length=200, blank=False, null=False, unique=True)
+    active = models.BooleanField(verbose_name=_('Active'), default=True)
+
+    class Meta:
+        verbose_name = _('Duration')
+#        verbose_name_plural = _('Platforms')
+
+    def __str__(self):
+        return self.duration
+    
+    def __unicode__(self):
+        return self.duration
+    
+    
 
 class Config(models.Model):
     plan = models.CharField(verbose_name=_('Plan'), max_length=200, blank=False, null=False, unique=True)
+    duration = models.ForeignKey(Duration, verbose_name=_('ِDuration'), on_delete=models.SET_NULL, null=True)
     platforms = models.ManyToManyField(Platform, verbose_name='Platforms', blank=True)
     reousrces = models.ManyToManyField('Resource', verbose_name='Resources', blank=True)
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):
-        if self.pk is None and Config.objects.count() == 1:
+        if self.pk is None and Config.objects.count() == 4:
             raise Exception(_('Maximum allowed Conf object is 1.'))
 
         return super(Config, self).save(force_insert=False, force_update=False, using=None,

@@ -18,6 +18,10 @@ class PlatformViewSet(
 #    permission_classes = [permissions.IsAuthenticated]
     permission_classes = [permissions.AllowAny]
 
+class DurationViewSet(mixins.ListModelMixin,
+                      viewsets.GenericViewSet):
+    queryset = models.Duration.objects.filter(active=True)
+    serializer_class = serializers.DurationSerializer
 
 class ResourceViewSet(mixins.ListModelMixin,
                       viewsets.GenericViewSet):
