@@ -20,7 +20,7 @@ class PlatformViewSet(
 
 class DurationViewSet(mixins.ListModelMixin,
                       viewsets.GenericViewSet):
-    queryset = models.Duration.objects.filter(active=True)
+    queryset = models.Duration.objects.all()
     serializer_class = serializers.DurationSerializer
 
 class ResourceViewSet(mixins.ListModelMixin,
