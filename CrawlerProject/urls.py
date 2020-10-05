@@ -13,22 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
-from rest_framework import routers
 from Crawler import views
+from django.contrib import admin
+from rest_framework import routers
+from django.urls import path, include
 
 router = routers.DefaultRouter()
 router.register(r'platform', views.PlatformViewSet)
 router.register(r'resource', views.ResourceViewSet)
 router.register(r'manifest', views.ManifestViewSet)
 router.register(r'config', views.ConfigViewSet)
-#router.register(r'manifestsp', views.Manifest_SPViewSet)
-router.register(r'news',views.NewsViewSet)
-router.register(r'duration',views.DurationViewSet)
-
+# router.register(r'manifestsp', views.Manifest_SPViewSet)
+router.register(r'news', views.NewsViewSet)
+router.register(r'duration', views.DurationViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/alexa/', views.AlexaViewSet.as_view()),
     path('api/', include(router.urls)),
 ]
